@@ -1,0 +1,32 @@
+<nav>
+    <div class="burger-icon" id="menu-toggle">
+        <div class="burger-line"></div>
+        <div class="burger-line"></div>
+        <div class="burger-line"></div>
+    </div>
+    <ul id="menu-items">
+        <% if (user_role=="manager" ) { %>
+            <li><a href="/users_admin">Users</a></li>
+            <li><a href="/product_admin">Products</a></li>
+            <li><a href="/order_admin">Orders</a></li>
+            <li><a href="/users_changelog">Changelog</a></li>
+            <% } else if (user_role=="stock" ) { %>
+                <li><a href="/product_admin">Products</a></li>
+                <% } else if (user_role=="sales" ) { %>
+                    <li><a href="/order_admin">Orders</a></li>
+                    <% } %>
+                        <li><a href="/user_logout">Logout</a></li>
+    </ul>
+</nav>
+
+<script>
+    const menuItemsElement = document.getElementById("menu-items");
+const menuToggleElement = document.getElementById("menu-toggle");
+menuToggleElement.addEventListener("click", (e) => {
+    // This block of code runs each time the user clicks the burger icon
+
+    //Toggle between display: flex and display: none
+    //For the menu-items element
+    menuItemsElement.classList.toggle("show-menu-items");
+});
+</script>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include("partials/head.ejs") %>
+        <title>Mobile Hour - Changelog</title>
+    </head>
+    <body>
+        <main>
+            <%- include("partials/admin_nav.ejs", {user_role: user_role}) %>
+            <section class="cols-4 data-list">
+                <span class="data-list-heading">Datetime</span>
+                <span class="data-list-heading">Description</span>
+                <span class="data-list-heading">Username</span>
+                <span class="data-list-heading">Product Id</span>
+                <% for (let change of changes) { %>
+                    <span><%= change.changelog_change_date.toLocaleString() %></span>
+                    <span><%= change.changelog_change_description %></span>
+                    <span><%= change.user_username %></span>
+                    <span><%= change.changelog_product_id %></span>
+                    <% } %>
+                </section>
+                <%- include("partials/footer.ejs") %>
+        </main>
+    </body>

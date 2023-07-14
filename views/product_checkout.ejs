@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include("partials/head.ejs") %>
+    <title>Checkout</title>
+</head>
+<body>
+    <main>
+        <%- include("partials/header.ejs") %>
+        <section class="checkout-layout">
+            <article class="phone-card">
+                <img src="/generic-phone-product-scaled.jpg" alt="Generic phone picture" />
+                <h2><%= product.product_manufacturer  %> <%=  product.product_name %></h2>
+                <span class="product-details">$<%= product.product_price %></span>
+                <span class="product-details"><%= product.product_model %></span>
+            </article>
+            <form action="/create_order" method="post" class="form-grid">
+                <input
+                    type="hidden"
+                    name="product_id"
+                    value="<%= product.product_id %>"
+                    class="textbox"
+                    pattern="[0-9]{1,}"
+                    required
+                />
+                <label for="customer-first-name">First Name:</label>
+                <input
+                    type="text"
+                    name="customer_first_name"
+                    id="customer-first-name"
+                    class="textbox"
+                    pattern="[a-zA-Z-]{2,}"
+                    required
+                />
+                <label for="customer-last-name">Last Name:</label>
+                <input
+                    type="text"
+                    name="customer_last_name"
+                    id="customer-last-name"
+                    class="textbox"
+                    pattern="[a-zA-Z-]{2,}"
+                    required
+                />
+                <label for="customer-address">Address:</label>
+                <input
+                    type="text"
+                    name="customer_address"
+                    id="customer-address"
+                    class="textbox"
+                    pattern="(\b(?:(?!\s{2,}|\$|\:|\.\d).)*\s(?:Alley|Ally|Arcade|Arc|Avenue|Ave|Boulevard|Bvd|Bypass|Bypa|Circuit|Cct|Close|Cl|Corner|Crn|Court|Ct|Crescent|Cres|Cul-de-sac|Cds|Drive|Dr|Esplanade|Esp|Green|Grn|Grove|Gr|Highway|Hwy|Junction|Jnc|Lane|Lane|Link|Link|Mews|Mews|Parade|Pde|Place|Pl|Ridge|Rdge|Road|Rd|Square|Sq|Street|St|Terrace|Tce|ALLEY|ALLY|ARCADE|ARC|AVENUE|AVE|BOULEVARD|BVD|BYPASS|BYPA|CIRCUIT|CCT|CLOSE|CL|CORNER|CRN|COURT|CT|CRESCENT|CRES|CUL-DE-SAC|CDS|DRIVE|DR|ESPLANADE|ESP|GREEN|GRN|GROVE|GR|HIGHWAY|HWY|JUNCTION|JNC|LANE|LANE|LINK|LINK|MEWS|MEWS|PARADE|PDE|PLACE|PL|RIDGE|RDGE|ROAD|RD|SQUARE|SQ|STREET|ST|TERRACE|TCE))\s.*?(?=\s{2,})"
+                    required
+                />
+                <label for="customer-phone">Phone:</label>
+                <input
+                    type="tel"
+                    name="customer_phone"
+                    id="customer-phone"
+                    class="textbox"
+                    pattern="(^\({0,1}((0|\+61)(2|4|3|7|8)){0,1}\){0,1}(\ |-){0,1}[0-9]{2}(\ |-){0,1}[0-9]{2}(\ |-){0,1}[0-9]{1}(\ |-){0,1}[0-9]{3}$)"
+                    required
+                />
+                <label for="customer-email">Email:</label>
+                <input
+                    type="email"
+                    name="customer_email"
+                    id="customer-email"
+                    class="textbox"
+                    pattern="^\S{1,}@\S{1,}[.]\S{1,}$"
+                    required
+                />
+                <a href="/" class="link-button">Back</a>
+                <input type="submit" value="Pay" />
+            </form>
+        </section>
+        <%- include("partials/footer.ejs") %>
+    </main>
+</body>
+</html>

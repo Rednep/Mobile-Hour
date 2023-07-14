@@ -1,0 +1,41 @@
+<header>
+    <nav>
+        <div class="burger-icon" id="menu-toggle">
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+        </div>
+        <ul id="menu-items">
+            <li><a href="/product_list">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/product_list">Products</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+    <span>
+        <a href="/product_list" class="header-img-container">
+            <img src="\Logo.jpg" alt="Mobile Hour Logo" id="logo">
+        </a>
+        <form action="product_list" method="get" class="search-form">
+            <div class="input-container">
+                <input type="text" name="search_term" id="search-term" placeholder="  Search..." />
+                <input type="submit" value="Search" id="input-button" />
+            </div>
+        </form>
+        <!-- <a href="/product_cart" class="header-img-container">
+            <img src="\cart-icon.svg" alt="cart icon" id="cart-img">
+        </a> -->
+    </span>
+</header>
+
+<script>
+    const menuItemsElement = document.getElementById("menu-items");
+const menuToggleElement = document.getElementById("menu-toggle");
+menuToggleElement.addEventListener("click", (e) => {
+    // This block of code runs each time the user clicks the burger icon
+
+    //Toggle between display: flex and display: none
+    //For the menu-items element
+    menuItemsElement.classList.toggle("show-menu-items");
+});
+</script>
